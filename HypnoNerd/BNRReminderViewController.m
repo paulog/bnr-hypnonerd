@@ -1,15 +1,20 @@
 //
-//  BNRHypnosisViewController.m
+//  BNRReminderViewController.m
 //  HypnoNerd
 //
 //  Created by Paulo Gonzaga on 4/29/14.
 //  Copyright (c) 2014 Big Nerd Ranch. All rights reserved.
 //
 
-#import "BNRHypnosisViewController.h"
-#import "BNRHypnosisView.h"
+#import "BNRReminderViewController.h"
 
-@implementation BNRHypnosisViewController
+@interface BNRReminderViewController ()
+
+@property (nonatomic, weak) IBOutlet UIDatePicker *datePicker;
+
+@end
+
+@implementation BNRReminderViewController
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -17,11 +22,11 @@
     
     if (self) {
         // Set the tab bar item's title
-        self.tabBarItem.title = @"Hypnotize";
+        self.tabBarItem.title = @"Reminder";
         
         // Create a UIImage from a file
         // this will use Hypno@wx.png on retina display devices
-        UIImage *image = [UIImage imageNamed:@"Hypno.png"];
+        UIImage *image = [UIImage imageNamed:@"Time.png"];
         
         // Put that image on the tab bar item
         self.tabBarItem.image = image;
@@ -30,14 +35,10 @@
     return self;
 }
 
-- (void)loadView
+- (IBAction)addReminder:(id)sender
 {
-    // Create a view
-    CGRect frame = [UIScreen mainScreen].bounds;
-    BNRHypnosisView *backgroundView = [[BNRHypnosisView alloc] initWithFrame:frame];
-    
-    // Set it as *the* view of this view controller
-    self.view = backgroundView;
+    NSDate *date = self.datePicker.date;
+    NSLog(@"Setting a reminder for %@", date);
 }
 
 @end
